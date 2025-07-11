@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import girlImage from './assets/girl-illustration.png'; // ✅ Correct path for your structure
+import { useNavigate } from 'react-router-dom';
+import girlImage from './assets/girl-illustration.png';
 
 function Login() {
   const [input, setInput] = useState('');
+  const navigate = useNavigate(); // 👈 Add this line
 
   const handleLogin = () => {
     if (!input) {
       alert('Please enter email or phone number.');
       return;
     }
+
     alert('Login successful!');
+    navigate('/home'); // 👈 Navigate to Home page after login
   };
 
   return (
