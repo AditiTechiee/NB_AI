@@ -12,10 +12,11 @@ const Navbar = () => {
         <div className="flex items-center space-x-8 pl-4">
           <div className="flex items-center space-x-2">
             <img
-              src="https://img.icons8.com/fluency/48/female-shield.png"
-              alt="Nirbhaya Logo"
-              className="w-6 h-6"
-            />
+  src="/Nirbyanavbarlogo.png"
+  alt="Nirbhaya AI Logo"
+  className="w-12 h-12 mr-2"
+/>
+
             <span className="font-semibold text-lg text-gray-800">Nirbhaya</span>
           </div>
           <nav className="hidden md:flex space-x-6 text-sm font-medium text-gray-600">

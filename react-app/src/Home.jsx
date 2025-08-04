@@ -1,21 +1,23 @@
 import React from 'react';
 import { FiBell, FiPhoneCall, FiMapPin, FiAlertCircle, FiShield, FiFileText } from 'react-icons/fi';
-import Navbar from './Navbar'; // 👈 Make sure Navbar.jsx is in the same folder or adjust path
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { Link } from 'react-router-dom'; // ✅ Import Link
 
-const FeatureCard = ({ icon: Icon, title, desc }) => (
-  <div className="flex flex-col items-start p-5 border rounded-lg shadow-sm bg-white hover:shadow-md transition">
+// ✅ Updated FeatureCard to accept a "to" prop
+const FeatureCard = ({ icon: Icon, title, desc, to }) => (
+  <Link to={to} className="flex flex-col items-start p-5 border rounded-lg shadow-sm bg-white hover:shadow-md transition hover:bg-indigo-50">
     <Icon className="text-indigo-600 text-xl mb-2" />
     <h4 className="font-semibold text-sm mb-1">{title}</h4>
     <p className="text-xs text-gray-600 leading-relaxed">{desc}</p>
-  </div>
+  </Link>
 );
 
 const Home = () => {
   return (
     <>
-      <Navbar /> {/* 👈 Injected the navbar */}
-      <div className="min-h-screen bg-gray-50 px-4 md:px-16 pt-28 pb-12"> {/* 👈 Top padding adjusted to avoid navbar overlap */}
-        
+      <Navbar />
+      <div className="min-h-screen bg-gray-50 px-4 md:px-16 pt-28 pb-12">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto">
           <span className="text-xs px-3 py-1 bg-gray-200 rounded-full inline-block mb-4">Protection Status: Inactive</span>
@@ -36,15 +38,46 @@ const Home = () => {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <FeatureCard icon={FiBell} title="Real-time Alerts" desc="Receive instant notifications for potential threats in your vicinity." />
-            <FeatureCard icon={FiPhoneCall} title="Emergency Contacts" desc="Quickly connect with your trusted contacts during emergencies." />
-            <FeatureCard icon={FiMapPin} title="Location Safety" desc="Share your live location with designated guardians for peace of mind." />
-            <FeatureCard icon={FiAlertCircle} title="Threat Detection" desc="Leverage AI-powered analysis to identify and mitigate risks." />
-            <FeatureCard icon={FiShield} title="Safe Zones Setup" desc="Define custom safe zones and get notified when you or loved ones enter/exit." />
-            <FeatureCard icon={FiFileText} title="Incident Reporting" desc="Submit detailed reports of incidents directly to relevant authorities." />
+            <FeatureCard
+              icon={FiBell}
+              title="Real-time Alerts"
+              desc="Receive instant notifications for potential threats in your vicinity."
+              to="/alerts"
+            />
+            <FeatureCard
+              icon={FiPhoneCall}
+              title="Emergency Contacts"
+              desc="Quickly connect with your trusted contacts during emergencies."
+              to="/emergency-contacts"
+            />
+            <FeatureCard
+              icon={FiMapPin}
+              title="Location Safety"
+              desc="Share your live location with designated guardians for peace of mind."
+              to="/safe-zones"
+            />
+            <FeatureCard
+              icon={FiAlertCircle}
+              title="Threat Detection"
+              desc="Leverage AI-powered analysis to identify and mitigate risks."
+              to="/alerts"
+            />
+            <FeatureCard
+              icon={FiShield}
+              title="Safe Zones Setup"
+              desc="Define custom safe zones and get notified when you or loved ones enter/exit."
+              to="/safe-zones"
+            />
+            <FeatureCard
+              icon={FiFileText}
+              title="Incident Reporting"
+              desc="Submit detailed reports of incidents directly to relevant authorities."
+              to="/report-incident"
+            />
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
